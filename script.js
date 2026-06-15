@@ -1,6 +1,21 @@
 const feed = document.getElementById('feed');
 const navBtns = document.querySelectorAll('.nav-btn');
 
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+themeIcon.textContent = savedTheme === 'dark' ? '○' : '◐';
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  themeIcon.textContent = next === 'dark' ? '○' : '◐';
+})
+
 function showLanding() {
   feed.innerHTML = landing;
   feed.classList.remove('grid-bg');
