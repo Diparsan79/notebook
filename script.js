@@ -91,7 +91,7 @@ function renderEntries(filter= 'all') {
     article.innerHTML = `
       <div class="entry-header">
         <span class="entry-type">${entry.type}</span>
-        <span class="entry-date">${entry.date}</span>
+        <span class="entry-date" title="${entry.date}">$relativeTime(entry.date)</span>
         <span class="entry-readtime">${readingtime(entry.body)}</span>
         <h2 class="entry-title">${entry.title}</h2>
         <p class="entry-preview">${entry.preview}</p>
@@ -304,3 +304,17 @@ searchInput.addEventListener('keydown', (e) => {
   }
 });
 
+// relative time
+
+function relativeTime(dateStr) {
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diff = Math.floor((now-date) / 1000);
+
+  if (diff < 60)        return'just now';
+  if (diff < 3600)      return `${Math.floor(diff / 60)}m ago`;
+  if (diff <86400)      return `${Math.floor(diff / 3600)}h ago`;
+  if (diff < 2592000)   return `${Math.floor(diff / 86400)}d ago`;
+  if (diff < 32536000)  return `${Math.floor(diff / 2592000)}mo ago`;
+  return `${Math.floor(diff / 31536000)}y ago`;
+}
