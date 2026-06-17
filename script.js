@@ -4,17 +4,7 @@ const navBtns = document.querySelectorAll('.nav-btn');
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 
-const savedTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', savedTheme);
-themeIcon.textContent = savedTheme === 'dark' ? '○' : '◐';
 
-themeToggle.addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  themeIcon.textContent = next === 'dark' ? '○' : '◐';
-})
 
 function showLanding() {
   feed.innerHTML = landing;
@@ -192,6 +182,8 @@ navBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const view = btn.dataset.view;
     setActiveNav(view);
+    searchInput.value = '';
+    searchCount.textContent = '';
     if (view ==='home') {
       showLanding();
     } else {
@@ -201,4 +193,114 @@ navBtns.forEach(btn => {
 });
 
 document.getElementById('status-working').textContent = status.working;
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+themeIcon.textContent = savedTheme === 'dark' ? '○' : '◐';
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  themeIcon.textContent = next === 'dark' ? '○' : '◐';
+});
 showLanding();
+
+const searchInput = document.getElementById('search-input');
+const searchInput = document.getElementById('search-count');
+
+let searchTimeout = null;
+let currentView = 'home';
+
+function highlight(text, query) {
+  if (!query) return text;
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escaped})`, 'gi');
+  return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+}
+
+function searchEntries(query) {
+  const q = query.toLowerCase().trim();
+
+  if (!q) {
+    searchCount.textContent = '';
+    if (currentView === 'home') {
+      showLanding();
+    } else {
+      renderEntries(currentView === 'all' ? 'all' : currentView);
+    }
+    return;
+  }
+
+  const filtered = entries.filter(e => {
+    return (
+      e.title.toLowerCase().includes(q) ||
+      e.preview.toLowerCase().includes(q) ||
+      e.body.toLowerCase().includes(q) ||
+      e.tags.some(t => t.toLowerCase().includes(q))
+    );
+  });
+
+  feed.classList.add('grid-bg');
+  feed.innerHTML = '';
+
+  const header = document.createElement('div');
+  header.className = 'feed-header';
+  header.innerHTML = `
+    <h1>Search: ${query}</h1>
+    <span class="feed-count">${filtered.length} ${filtered.length === 1 ? 'result' : 'results'}</span>
+  `;
+  feed.appendChild(header);
+
+  searchCount.textContent = `${filtered.length} found`;
+  
+  if (filtered.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = `empty-state`;
+    empty.innerHTML = `
+      <p>no results for "${query}"</p>
+      <span>try different keywords or check your tags</span>
+    `;
+    feed.appendChild(empty);
+    return;
+  }
+
+  filtered.forEach(entry => {
+    const article = document.createElement('article');
+    article.className = `entry ${entry.type}`;
+    article.dataset.id = entry.id;
+
+    article.innerHTML = `
+    <div class="entry-header">
+      <span class="entry-type">${entry.date}</span>
+      <span class="entry-date">${entry.date}</span>
+      <span class="entry-readtime">${readingtime(entry.body)}</span>
+      <h2 class="entry-title">${highlight(entry.title, query)}</h2>
+      <p class="entry-preview">${highlight(entry.preview, query)}</p>
+      <div class="entry-tags">
+        ${entry.tags.map(t => `<span class="tag">${highlight(t, query)}</span>`).join('')}
+      </div>
+    </div>
+    <div class="entry-body">
+      ${entry.body}
+    </div>
+  `;
+    
+  
+  feed.appendChild(article);
+
+  });
+
+  attachExpandListeners();
+  attachTagListeners();
+}
+
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key ==='Escape') {
+    searchInput.value = '';
+    searchCount.textContent = '';
+    if (currentView === 'home') showLanding();
+    else renderEntries(currentView);
+  }
+});
+

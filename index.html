@@ -42,6 +42,17 @@
         </button>
         </aside>
         <main class = "feed" id="feed" aria-live="polite" aria-label="Content feed">
+            <div class="search-wrap">
+                <input
+                    type="text"
+                    id="search-input"
+                    class="search-input"
+                    placeholder="search entries..."
+                    aria-label="Search entries"
+                />
+                <span class="search-icon">⌕</span>
+                <div class="search-results-count" id="search-count"></div>
+            </div>
         </main>
     </div>
     <script src="data.js"></script>

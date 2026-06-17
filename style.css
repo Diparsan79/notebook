@@ -699,3 +699,64 @@ pre code {
 .theme-toggle:hover {
     color: var(--color-text);
 }
+
+
+/* Search */
+
+.search-wrap {
+    margin-top: var(--space-lg);
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text);
+    padding: var(--space-xs) 0;
+    padding-right: var(--space-lg);
+    outline: none;
+    transition: border-color 0.15s ease;
+    caret-color: var(--color-amber);
+}
+
+.search-input::placeholder {
+    color: var(--color-border);
+    letter-spacing: 0.08em;
+}
+
+.search-input:focus {
+    border-bottom-color: var(--color-accent);
+}
+
+.search-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--color-border);
+    pointer-events: none;
+}
+
+.search-results.count {
+    font-family: var(--font-mono);
+    font-size: 0.6em;
+    color: var(--color-muted);
+    letter-spacing: 0.08em;
+    margin-top: var(--space-xs);
+    min-height: 1em;
+}
+
+.search-highlight {
+    background: rgba(196, 127, 42, 0.2);
+    color: var(--color-amber);
+    border-radius: 1px;
+}
+
+[data-theme="dark"] .search-highlight {
+    background: rgba(212, 146, 74, 0.15);
+}
