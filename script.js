@@ -50,6 +50,17 @@ function renderEntries(filter= 'all') {
     
   feed.innerHTML = '';
 
+  let filtered = filter === 'all'
+    ? entries
+    : entries.filter(e => e.type === filter);
+
+  filtered = [
+    ...filtered.filter(e => e.pinned),
+    ...filtered.filter(e => !e.pinned)
+  ];
+
+  
+
   const filtered = filter === 'all' ? entries : entries.filter(e => e.type === filter);
   
   const label = filter ==='all' ? 'all entries' : filter ==='journal' ? 'journal' : 'lab notes';
@@ -85,14 +96,15 @@ function renderEntries(filter= 'all') {
   
   filtered.forEach(entry => {
     const article = document.createElement('article');
-    article.className = `entry ${entry.type}`;
+    article.className = `entry ${entry.type}${entry.pinned ? 'pinned': ''}`;
     article.dataset.id = entry.id;
 
     article.innerHTML = `
       <div class="entry-header">
         <span class="entry-type">${entry.type}</span>
-        <span class="entry-date" title="${entry.date}">$relativeTime(entry.date)</span>
+        <span class="entry-date" title="${entry.date}">$relativeTime(entry.date)}</span>
         <span class="entry-readtime">${readingtime(entry.body)}</span>
+        ${entry.pinned ? '<sp;an class="pin-indicator">pinned</span>' : ''}
         <h2 class="entry-title">${entry.title}</h2>
         <p class="entry-preview">${entry.preview}</p>
         <div class="entry-tags">

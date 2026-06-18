@@ -760,3 +760,61 @@ pre code {
 [data-theme="dark"] .search-highlight {
     background: rgba(212, 146, 74, 0.15);
 }
+
+/* TIMESTAMP */
+
+.entry-date {
+    position: relative;
+    cursor: default;
+}
+
+.entry-date:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: -28px;
+    right: 0;
+    background: var(--color-text);
+    color: var(--color-bg);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    padding: 3px 6px;
+    border-radius: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* pinned entries */
+
+.entry.pinned {
+    background: rgba(26, 46, 74, 0.03);
+    border-left: 2px solid var(--color-accent);
+    padding-left: var(--space-md);
+}
+
+.entry.pinned.lab-note {
+    border-left-color: var(--color-amber);
+    background: rgba(196, 127, 42, 0.03);
+}
+
+.pin-indicator {
+    grid-column: 1 / -1;
+    grid-row: 5;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-top: var(--space-xs);
+}
+
+.entry.pinned.lab-note .pin-indicator {
+    color: var(--color-amber);
+}
+[data-theme="dark"] .entry.pinned {
+    background: rgba(122, 156, 191, 0.05);
+}
+
+[data-theme="dark"] .entry.pinned.lab-note {
+    background: rgba(212, 146, 74, 0.05);
+}
