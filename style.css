@@ -818,3 +818,47 @@ pre code {
 [data-theme="dark"] .entry.pinned.lab-note {
     background: rgba(212, 146, 74, 0.05);
 }
+
+/* notebook stats */
+
+.notebook-stats {
+    margin-top: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+}
+
+.stat-value {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text);
+}
+
+/* word count on  entry ex[and */
+
+.entry-wordcount {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--color-border);
+    text-align: right;
+    margin-top: var(--space-md);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-border);
+}

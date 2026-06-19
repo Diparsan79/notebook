@@ -99,6 +99,11 @@ function renderEntries(filter= 'all') {
     article.className = `entry ${entry.type}${entry.pinned ? 'pinned': ''}`;
     article.dataset.id = entry.id;
 
+    const wordCount = entry.body
+      .replace(/<[^>]*>/g, '')
+      .trim()
+      .split(/\s+/).length;
+
     article.innerHTML = `
       <div class="entry-header">
         <span class="entry-type">${entry.type}</span>
@@ -113,6 +118,7 @@ function renderEntries(filter= 'all') {
       </div>
       <div class="entry-body">
         ${entry.body}
+        <span class="entry-wordcount">${wordCount} words</span>
       </div>
     `;
     
@@ -216,6 +222,7 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('theme', next);
   themeIcon.textContent = next === 'dark' ? '○' : '◐';
 });
+renderStats();
 showLanding();
 
 const searchInput = document.getElementById('search-input');
@@ -330,3 +337,43 @@ function relativeTime(dateStr) {
   if (diff < 32536000)  return `${Math.floor(diff / 2592000)}mo ago`;
   return `${Math.floor(diff / 31536000)}y ago`;
 }
+
+ // Notebook stats
+
+ function computeStats() {
+  const totalEntries = entries.length;
+  const journalCount = entries.filter(e=> e.type ==='journal').length;
+  const labCount = entries.filter(e => e.type === 'lab-note').length;
+  const totalWords = entries.reduce((acc,e) => {
+    const text = e.body.replace(/\s+/).length;
+    return acc + text.split(/\s+/).length;
+  }, 0);
+  const pinnedCount = entries.filter(e => e.pinned).length;
+
+  return {totalEntries, journalCount, labCount, totalWords, pinnedCount };
+ }
+
+ function renderStats() {
+  const stats = computeStats();
+  const statsE1 = document.getElementById('notebook-stats');
+  if (!statsE1) return;
+
+  statsE1.innerHTML = `
+    <div class="stat-row">
+      <span class="stat-label">entries</span>
+      <span class="stat-value">${stats.totalEntries}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">journal</span>
+      <span class="stat-value">${stats.journalCount}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">lab notes</span>
+      <span class="stat-value">${stats.labCount}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">words</span>
+      <span class="stat-value">${stats.totalWords.toLocaleString()}</span>
+    </div>
+  `;
+ }
