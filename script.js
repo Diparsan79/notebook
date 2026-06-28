@@ -63,8 +63,11 @@ function renderEntries(filter= 'all') {
 
   const filtered = filter === 'all' ? entries : entries.filter(e => e.type === filter);
   
-  const label = filter ==='all' ? 'all entries' : filter ==='journal' ? 'journal' : 'lab notes';
-
+const label = 
+  filter === 'all'       ? 'all entries' :
+  filter === 'journal'   ? 'journal' :
+  filter === 'lab-note'  ? 'lab notes' :
+  filter === 'changelog' ? 'changelog' : filter;
   const header = document.createElement('div');
   header.className = 'feed-header';
   feed.innerHTML = `
@@ -118,7 +121,12 @@ function renderEntries(filter= 'all') {
       </div>
       <div class="entry-body">
         ${entry.body}
-        <span class="entry-wordcount">${wordCount} words</span>
+        <div class="entry-footer">
+          <span class="entry-wordcount">${wordCount} words</span>
+          <a class="entry-anchor" href="#entry-${entry.id}" onclick="event.stopPropagation()">
+            # link
+          </a>
+        </div>
       </div>
     `;
     
@@ -222,8 +230,7 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('theme', next);
   themeIcon.textContent = next === 'dark' ? '○' : '◐';
 });
-renderStats();
-showLanding();
+
 
 const searchInput = document.getElementById('search-input');
 const searchInput = document.getElementById('search-count');
@@ -377,3 +384,57 @@ function relativeTime(dateStr) {
     </div>
   `;
  }
+
+ //anchor links
+
+function getEntryById(id) {
+  return entries.find(e => e.id === parseInt(id));
+}
+
+function openEntryById(id) {
+  const entry = getEntryById(id);
+  if(!entry) return;
+
+  currentView = entry.type;
+  setActiveNav(entry.type);
+  showFeed(entry.type);
+
+  setTimeout(() => {
+    const article = document.querySelector(`[data-id="${id}"]`);
+    if (!article) return;
+
+    const allEntries = document.querySelectorAll('.entry');
+    allEntries.forEach(e => {
+      e.classList.remove('expanded');
+      e.querySelector('.entry-body').style.display = 'none';
+      e.setAttribute('aria-expanded', 'false');
+    });
+
+    article.classList.add('expanded');
+    article.querySelector('.entry-body').style.display = 'block';
+    article.setAttribute('aria-expanded', 'true');
+    article.scrollIntoView({ behavior: 'smooth', block: 'start'});
+
+    window.location.hash = `entry-${id}`;
+  },  50);
+}
+
+function handleHashOnLoad() {
+  const hash = window.location.hash;
+  if (!hash.startsWith('#entry-')) return;
+  const id= hash.replace('#entry-', '');
+  openEntryById(id);
+}
+
+
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash;
+  if (hash.startsWith('#entry-')) {
+    const id = hash.replace('#entry-', '');
+    openEntryById(id);
+  }
+});
+
+handleHashOnLoad();
+renderStats();
+showLanding();

@@ -19,6 +19,7 @@ img {
     --color-accent: #1a2e4a;
     --color-amber: #c47f2a;
     --color-border: #dddbd6;
+    --color-changelog: #7a6abf;
 
     --font-mono: 'Courier New', Courier, monospace;
     --font-body: Georgia, 'Times New Roman', serif;
@@ -861,4 +862,56 @@ pre code {
     margin-top: var(--space-md);
     padding-top: var(--space-sm);
     border-top: 1px solid var(--color-border);
+}
+
+/* entry footer and anchors */
+.entry-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-md);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-border);
+}
+
+.entry-wordcount {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--color-border);
+}
+
+.entry-anchor {
+    font-family: var(--font-mono);
+    font-size: 0.6em;
+    color: var(--color-muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.15s ease;
+}
+
+.entry-anchor:hover {
+    color: var(--color-accent);
+}
+
+/* changelogs */
+.entry.changelog .entry-type {
+    color: #7a6abf;
+}
+
+.entry.changelog:hover {
+    border-left-color: #7a6abf;
+}
+
+.entry.changelog.pinned {
+    border-left-color: #7a6abf;
+    background: rgba(122, 106, 191, 0.03);
+}
+
+.nav-btn[data-views="changelog"].active {
+    color: #7a6abf;
+    border-left-color: #7a6abf;
+}
+
+[data-theme="dark"] .entry.changelog .entry-type {
+    color: #a99de0;
 }

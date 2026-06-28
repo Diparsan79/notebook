@@ -2,7 +2,7 @@ const entries = [
     {
         id: 1,
         type: 'journal',
-        date: '2025-06-03',
+        date: '2026-06-03',
         title: 'Started the notebook',
         preview: 'First day of building this in public',
         tags: ['building','hard' ],
@@ -15,7 +15,7 @@ const entries = [
     {
         id:2,
         type: 'lab-note',
-        date: '2025-06-03',
+        date: '2026-06-03',
         title: 'HTML learning',
         preview: 'Im currently learning HTML from scratch.',
         tags: ['html', 'css', 'js'],
@@ -35,7 +35,35 @@ const entries = [
             </div>
         `
 
-    }   
+    },
+    {
+        id: 3,
+        type: 'devlogging',
+        date: '2026-06-21',
+        title: 'sites development is still ongoing',
+        preview: 'basic layout setup and all ideas planned',
+        tags: ['portfolio', 'notebook'],
+        pinned: false,
+        body: `
+            <div class="lab-section">
+                <span class="lab-label">added</span>
+                <p>two column layout planned with a static identity panel.</p>
+                <p>journal and Lab Note.</p>
+                <p>Expand & Collapse interaction for the logs(journal and lab notes)</p>
+                <p> Live search</p>
+                <p>Tag filtering syystem</p>
+            </div>
+            <div class="lab-section">
+                <span class="lab-label">Known issues</span>
+                <p> No mobile keyboard handling search.</p>
+                <p>Hash routing doesn't persist view state perfectly</p>
+            </div>
+            <div class="lab-section">
+                <span class="lab-label">next</span>
+                <p> Better mobile layout and deployment on github pages soon.</p>
+            </div>
+        `
+    }
 ];
 
 const landing = `
