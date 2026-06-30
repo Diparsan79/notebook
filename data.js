@@ -7,6 +7,7 @@ const entries = [
         preview: 'First day of building this in public',
         tags: ['building','hard' ],
         pinned: true,
+        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80',
         body: `
             <p>Today i started buiding my engineering notebook styled portfolio website. Im learning html css and js from scratch so this is lowk a lott harder but im getting the hook.</p>
             <p>Some things has really been boring to learn but lets keep going and see how it all turns out.</p>
