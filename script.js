@@ -120,6 +120,16 @@ const label =
         </div>
       </div>
       <div class="entry-body">
+        ${entry.image ? `
+          <div class="entry-image-wrap">
+          <img
+            src="${entry.image}"
+            alt="${entry.title}"
+            class="entry-image"
+            loading="lazy"
+            />
+          </div>
+          ` : ''}
         ${entry.body}
         <div class="entry-footer">
           <span class="entry-wordcount">${wordCount} words</span>
@@ -434,6 +444,22 @@ window.addEventListener('hashchange', () => {
     openEntryById(id);
   }
 });
+
+
+// back to top
+const backToTop = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', ()=> {
+  if (window.scrollY > 300) {
+    backToTop.classList.remove('visible');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth'});
+});
+
+
 
 handleHashOnLoad();
 renderStats();
