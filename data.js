@@ -111,7 +111,6 @@ const landing = `
             <h2>Connect</h2>
             <div class="landing-social-links">
                 <a href="https://github.com/Diparsan79" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://x.com/diparsanpathak" target="_blank" rel="noopener">X (Twitter)</a>
                 <a href="https://www.linkedin.com/in/diparsan-pathak/" target="_blank" rel="noopener">LinkedIn</a>
             </div>
         </div>
