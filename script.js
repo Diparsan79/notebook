@@ -33,8 +33,12 @@ function setActiveNav(view) {
 }
 
 function renderEntries(filter = "all") {
+  const existingLanding = feed.querySelector(".landing");
+  if (existingLanding) existingLanding.remove();
+  
   const existingHeader = feed.querySelector(".feed-header");
   if (existingHeader) existingHeader.remove();
+  
   const existingEntries = feed.querySelectorAll(".entry, .empty-state");
   existingEntries.forEach((e) => e.remove());
 
@@ -360,46 +364,6 @@ function relativeTime(dateStr) {
   return `${Math.floor(diff / 31536000)}y ago`;
 }
 
-// Notebook stats
-
-function computeStats() {
-  const totalEntries = entries.length;
-  const journalCount = entries.filter((e) => e.type === "journal").length;
-  const labCount = entries.filter((e) => e.type === "lab-note").length;
-  const totalWords = entries.reduce((acc, e) => {
-    const text = e.body.replace(/<[^>]*>/g, "");
-    return acc + text.trim().split(/\s+/).length;
-  }, 0);
-  const pinnedCount = entries.filter((e) => e.pinned).length;
-
-  return { totalEntries, journalCount, labCount, totalWords, pinnedCount };
-}
-
-function renderStats() {
-  const stats = computeStats();
-  const statsE1 = document.getElementById("notebook-stats");
-  if (!statsE1) return;
-
-  statsE1.innerHTML = `
-    <div class="stat-row">
-      <span class="stat-label">entries</span>
-      <span class="stat-value">${stats.totalEntries}</span>
-    </div>
-    <div class="stat-row">
-      <span class="stat-label">journal</span>
-      <span class="stat-value">${stats.journalCount}</span>
-    </div>
-    <div class="stat-row">
-      <span class="stat-label">lab notes</span>
-      <span class="stat-value">${stats.labCount}</span>
-    </div>
-    <div class="stat-row">
-      <span class="stat-label">words</span>
-      <span class="stat-value">${stats.totalWords.toLocaleString()}</span>
-    </div>
-  `;
-}
-
 //anchor links
 
 function getEntryById(id) {
@@ -421,16 +385,11 @@ function openEntryById(id) {
     const allEntries = document.querySelectorAll(".entry");
     allEntries.forEach((e) => {
       e.classList.remove("expanded");
-      e.querySelector(".entry-body").style.display = "none";
-      e.setAttribute("aria-expanded", "false");
     });
 
     article.classList.add("expanded");
-    article.querySelector(".entry-body").style.display = "block";
-    article.setAttribute("aria-expanded", "true");
     article.scrollIntoView({ behavior: "smooth", block: "start" });
 
-    addToRecentlyViewed(parseInt(id));
     window.location.hash = `entry-${id}`;
   }, 50);
 }
@@ -465,66 +424,35 @@ backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// recently viewed
-function getRecentlyViewed() {
-  const stored = localStorage.getItem("recentlyViewed");
-  return stored ? JSON.parse(stored) : [];
-}
+// Sidebar Tags
+function renderSidebarTags() {
+  const container = document.getElementById("sidebar-tags-container");
+  if (!container) return;
 
-function addToRecentlyViewed(id) {
-  let recent = getRecentlyViewed();
-  recent = recent.filter((rid) => rid !== id);
-  recent.unshift(id);
-  recent = recent.slice(0, 3);
-  localStorage.setItem("recentlyViewed", JSON.stringify(recent));
-  renderRecentlyViewed();
-}
-function renderRecentlyViewed() {
-  const wrap = document.getElementById("recently-viewed");
-  if (!wrap) return;
+  // Extract unique tags
+  const allTags = new Set();
+  entries.forEach((entry) => {
+    entry.tags.forEach((tag) => allTags.add(tag));
+  });
 
-  const recent = getRecentlyViewed();
+  const uniqueTags = Array.from(allTags).sort();
 
-  if (recent.length === 0) {
-    wrap.innerHTML = "";
+  if (uniqueTags.length === 0) {
+    container.innerHTML = "<span>No tags yet</span>";
     return;
   }
 
-  const items = recent.map((id) => getEntryById(id)).filter(Boolean);
+  container.innerHTML = uniqueTags
+    .map((tag) => `<button class="tag" data-tag="${tag}">${tag}</button>`)
+    .join("");
 
-  wrap.innerHTML = `
-    <span class="label">recent</span>
-    <div class="recent-list">
-      ${items
-        .map(
-          (e) => `
-        <a href="#entry-${e.id}" class="recent-item" data-id="${e.id}">
-          ${e.title}
-        </a>
-      `,
-        )
-        .join("")}
-    </div>
-  `;
-
-  wrap.querySelectorAll(".recent-item").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      openEntryById(link.dataset.id);
+  container.querySelectorAll(".tag").forEach((tagBtn) => {
+    tagBtn.addEventListener("click", () => {
+      filterByTag(tagBtn.dataset.tag);
     });
   });
 }
 
-// random-entryy
-const randomBthn = document.getElementById("random-btn");
-
-randomBthn.addEventListener("click", () => {
-  if (entries.length === 0) return;
-  const randomEntry = entries[Math.floor(Math.random() * entries.length)];
-  openEntryById(randomEntry.id);
-});
-
 handleHashOnLoad();
-renderStats();
-renderRecentlyViewed();
+renderSidebarTags();
 showLanding();

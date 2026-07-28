@@ -3,37 +3,39 @@ const entries = [
     id: 1,
     type: "journal",
     date: "2026-06-03",
-    title: "Starting the notebook",
-    preview: "First day of building this site in public",
-    tags: ["building", "reflection"],
+    title: "The Shift to Decentralization",
+    preview:
+      "Why I am dedicating my time to understanding peer-to-peer systems and decentralized networks.",
+    tags: ["web3", "philosophy"],
     pinned: true,
     image:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+      "https://images.unsplash.com/photo-1639762681485-074b7f4d2315?w=800&q=80",
     body: `
-            <p>Today I started building my engineering notebook styled portfolio website. I'm learning HTML, CSS, and JS from scratch so this is a lot harder than I expected, but I'm getting the hang of it.</p>
-            <p>Some things have been tedious to learn (like CSS flexbox), but let's keep going and see how it all turns out. The goal is to build a place where I can document my learning journey.</p>
+            <p>I've recently found myself completely absorbed in the world of decentralized systems. For a long time, the centralized web felt inevitable, but diving deep into cryptography and peer-to-peer networks has completely shifted my perspective.</p>
+            <p>This blog will serve as my open notebook. A place to document my learnings, random thoughts on blockchain architecture, and experiments in the web3 space. Building in public is hard, but essential.</p>
         `,
   },
   {
     id: 2,
     type: "lab-note",
     date: "2026-06-05",
-    title: "Mastering Semantic HTML",
-    preview: "Structuring the site for better accessibility",
-    tags: ["html", "accessibility"],
+    title: "Understanding Merkle Trees",
+    preview:
+      "A deep dive into the data structure that makes blockchains verifiable.",
+    tags: ["cryptography", "data-structures"],
     pinned: false,
     body: `
             <div class="lab-section">
                 <span class="lab-label">Objective</span>
-                <p>Build a solid, accessible layout for the website using proper semantic HTML tags.</p>
+                <p>Break down how Merkle Trees allow efficient and secure verification of content in large bodies of data.</p>
             </div>
             <div class="lab-section">
                 <span class="lab-label">Process</span>
-                <p>Instead of using generic <code>&lt;div&gt;</code> tags everywhere, I researched how to use landmarks like <code>&lt;aside&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;nav&gt;</code>. It makes the code much easier to read and improves screen reader compatibility.</p>
+                <p>I implemented a basic Merkle Tree from scratch using Python. By taking a list of transaction hashes, pairing them, and recursively hashing the pairs, I was able to generate a single Merkle Root.</p>
             </div>
             <div class="lab-section">
                 <span class="lab-label">Result</span>
-                <p>The DOM structure is much cleaner now. I also learned about ARIA labels which I'll be adding to buttons without text.</p>
+                <p>It's fascinating how a single 256-bit hash can cryptographically prove the existence of thousands of underlying records without needing the entire dataset. I'll push the code to my GitHub soon.</p>
             </div>
         `,
   },
@@ -41,35 +43,37 @@ const entries = [
     id: 3,
     type: "journal",
     date: "2026-06-12",
-    title: "The CSS Grid vs Flexbox debate",
-    preview: "Figuring out when to use which layout system",
-    tags: ["css", "layout"],
+    title: "Thoughts on the EVM Architecture",
+    preview:
+      "Is the Ethereum Virtual Machine becoming obsolete, or is it the ultimate standard?",
+    tags: ["ethereum", "architecture"],
     pinned: false,
     body: `
-            <p>I spent the whole evening trying to figure out if I should use Grid or Flexbox for the main layout. Everyone on Twitter seems to have a different opinion.</p>
-            <p>Ultimately, I went with Flexbox for the two-column sidebar layout because it felt simpler for this specific use case, but I can see how Grid would be powerful for a true masonry feed.</p>
+            <p>Been reading a lot of whitepapers lately regarding alternative virtual machines (like Solana's Sealevel and MoveVM). The EVM has immense network effects, but its sequential processing model is a massive bottleneck.</p>
+            <p>Will layer-2 rollups save the EVM, or will a parallelized execution environment ultimately take the crown? Time will tell. My bet is currently on parallelized EVMs like Monad gaining serious traction this year.</p>
         `,
   },
   {
     id: 4,
     type: "lab-note",
     date: "2026-06-20",
-    title: "Implementing Search functionality",
-    preview: "Building a live search with vanilla JavaScript",
-    tags: ["js", "feature"],
+    title: "Building a Simple P2P Node",
+    preview:
+      "Experimenting with libp2p to create a basic decentralized chat node.",
+    tags: ["networking", "libp2p"],
     pinned: false,
     body: `
             <div class="lab-section">
                 <span class="lab-label">Objective</span>
-                <p>Add a real-time search bar that filters entries instantly as the user types.</p>
+                <p>Use the libp2p networking stack to create two nodes that can discover each other and exchange messages without a central server.</p>
             </div>
             <div class="lab-section">
                 <span class="lab-label">Process</span>
-                <p>I added an event listener to the input field and used the <code>.filter()</code> array method to match the search query against the title, preview, and tags of each entry. I also learned about debouncing to prevent the function from firing too many times.</p>
+                <p>I set up a Node.js project and used <code>libp2p</code> with a simple floodsub routing protocol. Dealing with NAT traversal and peer discovery was significantly harder than standard HTTP client/server architecture.</p>
             </div>
             <div class="lab-section">
                 <span class="lab-label">Result</span>
-                <p>It works perfectly! It's super fast because it's all happening client-side with a small dataset.</p>
+                <p>Success! The nodes successfully discovered each other using an MDNS local discovery module. Next step: trying to connect nodes across the internet using a bootstrap node.</p>
             </div>
         `,
   },
@@ -77,30 +81,31 @@ const entries = [
     id: 5,
     type: "journal",
     date: "2026-06-28",
-    title: "Site launch planning",
-    preview: "Getting ready to push to production",
-    tags: ["portfolio", "milestone"],
+    title: "Digital Identity and Privacy",
+    preview:
+      "Who owns your data, and how Zero-Knowledge proofs might be the answer.",
+    tags: ["privacy", "zkp"],
     pinned: false,
     body: `
-            <p>The core features are finally working. I've got the sidebar, the journal entries, lab notes, and filtering set up.</p>
-            <p>Next steps before I put this on my Twitter: fixing some weird mobile responsive bugs and adding a proper dark mode. Really proud of how this is turning out.</p>
+            <p>The more I study Zero-Knowledge Proofs (ZKPs), the more I realize they are the missing layer of the internet. The ability to prove a statement is true without revealing the underlying data is basically magic.</p>
+            <p>Imagine proving you are over 18 without showing your passport, or proving you have enough funds for a loan without revealing your bank balance. ZK is going to change everything about digital identity.</p>
         `,
   },
 ];
 
 const landing = `
     <div class="landing">
-        <h1 class="hero-title">Hey, I'm Diparsan <span class="wave">👋</span></h1>
-        <p class="landing-intro">I'm a 16-year-old passionate programmer from Bharatpur, Nepal. I spend most of my time focused on Computer Science & Mathematics, building new things, and learning everyday.</p>
+        <h1 class="hero-title">Diparsan's Notebook</h1>
+        <p class="landing-intro">I'm Diparsan Pathak, a 16-year-old exploring the frontiers of decentralized systems, cryptography, and computer science. This space is my digital garden.</p>
         <p class="landing-nav-hint">
             Browse the <button class="landing-link" data-view="journal">journal</button> for my raw thoughts, 
-            or check out my <button class="landing-link" data-view="lab-note">lab notes</button> for my technical journey.
+            or dive into my <button class="landing-link" data-view="lab-note">lab notes</button> for technical experiments.
         </p>
     </div>
 `;
 
 const status = {
-  working: "engineering note",
+  working: "reading whitepapers",
   mood: "focused",
   updated: "2026-06-28",
 };

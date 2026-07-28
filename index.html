@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -47,6 +47,21 @@
           <span>Web dev & Python</span>
         </div>
 
+        <div class="social-links-sidebar">
+          <a href="https://github.com/Diparsan79" target="_blank" rel="noopener"
+            >github</a
+          >
+          <a href="https://x.com/diparsan" target="_blank" rel="noopener"
+            >x (twitter)</a
+          >
+          <a
+            href="https://www.linkedin.com/in/diparsan-pathak/"
+            target="_blank"
+            rel="noopener"
+            >linkedin</a
+          >
+        </div>
+
         <div class="status-block">
           <span class="label">Now</span>
           <span class="status-dot"></span>
@@ -55,28 +70,15 @@
         <nav class="side-nav" aria-label="Main navigation">
           <button class="nav-btn active" data-view="home">home</button>
           <button class="nav-btn" data-view="journal">journal</button>
-          <button class="nav-btn" data-view="lab-note">Lab notes</button>
+          <button class="nav-btn" data-view="lab-note">lab notes</button>
         </nav>
-        <button class="random-btn" id="random-btn">↻ random entry</button>
 
-        <div class="notebook-stats" id="notebook-stats"></div>
-        <div class="recently-viewed" id="recently-viewed"></div>
+        <div class="sidebar-tags">
+          <span class="label">Tags</span>
+          <div id="sidebar-tags-container" class="tags-container"></div>
+        </div>
 
         <div class="panel-footer">
-          <div class="social-links">
-            <a
-              href="https://github.com/Diparsan79"
-              target="_blank"
-              rel="noopener"
-              >github</a
-            >
-            <a
-              href="https://x.com/diparsanpathak"
-              target="_blank"
-              rel="noopener"
-              >x (twitter)</a
-            >
-          </div>
           <span>made with passion</span>
         </div>
       </aside>
