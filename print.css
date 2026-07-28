@@ -1,0 +1,117 @@
+/* print stylesheet */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fff;
+    color: #000;
+    font-family: Georgia, serif;
+    font-size: 11pt;
+    line-height: 1.6;
+}
+
+.identity-panel,
+.back-to-top,
+.filter-bar,
+.search-wrap,
+.notebook-stats,
+.entry-anchor,
+.entry-tags,
+.theme-toggle,
+.panel-footer {
+    display: none !important;
+}
+
+.layout {
+    display: block;
+}
+
+.fed {
+    max-width: 100%;
+    padding: 0;
+}
+
+/* entries */
+.entry {
+    page-break-inside: avoid;
+    border-bottom: 1pt solid #ccc;
+    padding: 16pt 0;
+    cursor: default;
+}
+
+.entry-body {
+    display: block !important;
+}
+
+.entry-type {
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #666;
+}
+
+.entry-date {
+    font-size: 7pt;
+    color: #666;
+}
+
+.entry-title {
+    font-size: 13pt;
+    font-weight: bold;
+    margin: 4pt 0;
+}
+
+.entry-preview {
+    font-size: 9pt;
+    color: #444;
+    margin-bottom: 8pt;
+}
+
+.lab-label {
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #888;
+}
+
+.entry-footer {
+    display: none;
+}
+
+/* feed header */
+.feed-header h1 {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #666;
+    border-bottom: 1pt solid #ccc;
+    padding-bottom: 6pt;
+    margin-bottom: 12pt;
+}
+
+.feed-count {
+    display: none;
+}
+
+/* page header */
+@page {
+    margin: 2cm;
+}
+
+body::before {
+    content: 'ENGINEERING NOTEBOOK - DIPARSAN';
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 7pt;
+    letter-spacing: 0.2em;
+    color: #999;
+    border-bottom: 1pt solid #ccc;
+    padding-bottom: 8pt;
+    margin-bottom: 24pt;
+}

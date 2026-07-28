@@ -155,6 +155,20 @@ function attachExpandListeners() {
 
     entry.addEventListener('click', () => {
       const isExpanded = entry.classList.contains('expanded');
+
+      allEntries.forEach(e => {
+        e.classList.remove('expanded');
+        e.querySelector('.entry-body').style.display = 'none';
+        e.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isExpanded) {
+        entry.classList.add('expanded');
+        entry.querySelector('.entry-body').style.display = 'none';
+        entry.setAttribute('aria-expanded', 'true');
+        addToRecentlyViewed(parseInt(entry.dataset.id));
+
+      }
     
     entry.setAttribute('tabindex', '0');
     entry.setAttribute('role', 'button');
@@ -403,7 +417,7 @@ function getEntryById(id) {
 
 function openEntryById(id) {
   const entry = getEntryById(id);
-  if(!entry) return;
+  if (!entry) return;
 
   currentView = entry.type;
   setActiveNav(entry.type);
@@ -423,10 +437,11 @@ function openEntryById(id) {
     article.classList.add('expanded');
     article.querySelector('.entry-body').style.display = 'block';
     article.setAttribute('aria-expanded', 'true');
-    article.scrollIntoView({ behavior: 'smooth', block: 'start'});
+    article.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+    addToRecentlyViewed(parseInt(id));
     window.location.hash = `entry-${id}`;
-  },  50);
+  }, 50);
 }
 
 function handleHashOnLoad() {
@@ -459,8 +474,66 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth'});
 });
 
+// recently viewed
+function getRecentlyViewed() {
+  const stored = localStorage.getItem('recentlyViewed');
+  return stored ? JSON.parse(stored) : [];
+}
+
+function addToRecentlyViewed(id) {
+  let recent = getRecentlyViewed();
+  recent = recent.filter(rid => rid !== id);
+  recent.unshift(id);
+  recent = recent.slice(0,3);
+  localStorage.setItem('recentlyViewed', JSON.stringify(recent));
+  renderRecentlyViewed();
+}
+function renderRecentlyViewed() {
+  const wrap = document.getElementById('recently-viewed');
+  if (!wrap) return;
+
+  const recent = getRecentlyViewed();
+
+  if (recent.length === 0) {
+    wrap.innerHTML = '';
+    return;
+  }
+
+  const items = recent 
+  .map(id => getEntryById(id))
+  .filter(Boolean);
+
+  wrap.innerHTML = `
+    <span class="label">recent</span>
+    <div class="recent-list">
+      ${items.map(e => `
+        <a href="entry-${e.id}" class="recent-item" data-id="${e.id}">
+          ${e.title}
+        </a>
+      `).join('')}
+    </div>
+  `;
+
+  wrap.querySelectorAll('.recent-item').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openEntryById(link.dataset.id);
+    });
+  });
+}
+
+
+// random-entryy
+const randomBthn = document.getElementById('random-btn');
+
+randomBthn.addEventListener('click', () => {
+  if (entries.length === 0) return;
+  const randomEntry = entries[Math.floor(Math.random() * entries.length)];
+  openEntryById(randomEntry.id);
+});
 
 
 handleHashOnLoad();
 renderStats();
+renderRecentlyViewed();
 showLanding();

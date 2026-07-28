@@ -45,6 +45,7 @@ const entries = [
         preview: 'basic layout setup and all ideas planned',
         tags: ['portfolio', 'notebook'],
         pinned: false,
+        draft: true,
         body: `
             <div class="lab-section">
                 <span class="lab-label">added</span>

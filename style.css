@@ -982,3 +982,60 @@ pre code {
 html {
     scroll-behavior: smooth;
 }
+
+/* recently viewed */
+
+.recently-viewed {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+.recently-viewed:empty {
+    display: none;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.recent-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: var(--space-sm);
+}
+
+.recent-item {
+    font-size: 0.75rem;
+    color: var(--color-text);
+    text-decoration: none;
+    line-height: 1.4;
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+}
+
+.recent-item:hover {
+    opacity: 1;
+    color: var(--color-accent);
+}
+
+/* style.css */
+.random-btn {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    padding: var(--space-xs) var(--space-sm);
+    margin-top: var(--space-md);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s ease;
+    text-align: left;
+}
+
+.random-btn:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}

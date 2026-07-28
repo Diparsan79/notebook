@@ -1,3 +1,5 @@
-##my website 
-im finally planning to make a lifetime personal website for me.
-lets see how this web dev journey works out
+## blog site
+
+I initially wanted to make just a basic blogging website for me but then i kinda thought of placing it within a good theme for some aesthetics.
+I wanted to make it have an engineering notebook kinda vibe .
+I plan to make this minimal and easy to use. I'm still confused with what kinda website i wanna make
