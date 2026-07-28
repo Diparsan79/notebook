@@ -35,10 +35,10 @@ function setActiveNav(view) {
 function renderEntries(filter = "all") {
   const existingLanding = feed.querySelector(".landing");
   if (existingLanding) existingLanding.remove();
-  
+
   const existingHeader = feed.querySelector(".feed-header");
   if (existingHeader) existingHeader.remove();
-  
+
   const existingEntries = feed.querySelectorAll(".entry, .empty-state");
   existingEntries.forEach((e) => e.remove());
 
@@ -121,7 +121,6 @@ function renderEntries(filter = "all") {
         </div>
         <div class="entry-footer">
           <span>${words} words</span>
-          <a href="#entry-${entry.id}" class="entry-link">permalink</a>
         </div>
       </div>
     `;
@@ -233,7 +232,6 @@ navBtns.forEach((btn) => {
   });
 });
 
-document.getElementById("status-working").textContent = status.working;
 const savedTheme = localStorage.getItem("theme") || "light";
 document.documentElement.setAttribute("data-theme", savedTheme);
 themeIcon.textContent = savedTheme === "dark" ? "○" : "◐";

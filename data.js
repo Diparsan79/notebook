@@ -97,15 +97,28 @@ const landing = `
     <div class="landing">
         <h1 class="hero-title">Diparsan's Notebook</h1>
         <p class="landing-intro">I'm Diparsan Pathak, a 16-year-old exploring the frontiers of decentralized systems, cryptography, and computer science. This space is my digital garden.</p>
+        
+        <div class="landing-about">
+            <h2>About Me</h2>
+            <ul class="about-list">
+                <li><strong>Location:</strong> Bharatpur, Nepal</li>
+                <li><strong>Focus:</strong> Building In Public</li>
+                <li><strong>Learning:</strong> Web dev & Python</li>
+            </ul>
+        </div>
+
+        <div class="landing-connect">
+            <h2>Connect</h2>
+            <div class="landing-social-links">
+                <a href="https://github.com/Diparsan79" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://x.com/diparsanpathak" target="_blank" rel="noopener">X (Twitter)</a>
+                <a href="https://www.linkedin.com/in/diparsan-pathak/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+
         <p class="landing-nav-hint">
             Browse the <button class="landing-link" data-view="journal">journal</button> for my raw thoughts, 
             or dive into my <button class="landing-link" data-view="lab-note">lab notes</button> for technical experiments.
         </p>
     </div>
 `;
-
-const status = {
-  working: "reading whitepapers",
-  mood: "focused",
-  updated: "2026-06-28",
-};
