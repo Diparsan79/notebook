@@ -1,67 +1,109 @@
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Diparsan Pathak's engineering notebook and portfolio"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📓</text></svg>"
+    />
+    <title>DIPARSAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>flameX</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="print.css" media="print">
-</head>
-<body>
+  <body>
     <div class="layout">
-        <aside class="identity-panel" aria-label="Identity panel">
-            <div class="identity-name">DIPARSAN</div>
-            <div class="identity-meta">
-                <span class="label">location</span>
-                <span> Bharatpur, Nepal</span>
-            </div>
-            <div class="identity-meta">
-                <span class="label">Focus</span>
-                <span>Building In Public</span>
-            </div>
-            <div class="identity-meta">
-                <span class="label">learning</span>
-                <span>Web dev & Python</span>
-            </div>
-            
-            <div class="status-block">
-                <span class="label">Now</span>
-                <span class ="status-dot"></span>
-                <span id="status-working"></span>
-            </div>
-            <nav class="side-nav" aria-label="Main navigation">
-                <button class="nav-btn active" data-view="home">home</button>
-                <button class="nav-btn" data-view="journal">journal</button>
-                <button class="nav-btn" data-view="lab-note">Lab notes</button>
-                <button class="nav-btn" data-view="changelog">changelog</button>
-            </nav>
-            <button class="random-btn" id="random-btn">↻ random entry</button>
-
-            <div class="panel-footer">
-                <span>made with passion</span>
-            </div>
-        <button class="theme-toggle" if="theme-toggle" aria-label="Toggle dark mode">
+      <aside class="identity-panel" aria-label="Identity panel">
+        <div class="identity-header">
+          <div class="identity-name">DIPARSAN</div>
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+          >
             <span id="theme-icon">◐</span>
-        </button>
-        </aside>
-        <main class = "feed" id="feed" aria-live="polite" aria-label="Content feed">
-            <div class="search-wrap">
-                <input
-                    type="text"
-                    id="search-input"
-                    class="search-input"
-                    placeholder="search entries..."
-                    aria-label="Search entries"
-                />
-                <span class="search-icon">⌕</span>
-                <div class="search-results-count" id="search-count"></div>
-            <div class="notebook-stats" id="notebook-stats"></div>
-            <div class="recently-viewed" id="recently-viewed"></div>
-            </div>
-        </main>
+          </button>
+        </div>
+        <div class="identity-meta">
+          <span class="label">location</span>
+          <span> Bharatpur, Nepal</span>
+        </div>
+        <div class="identity-meta">
+          <span class="label">Focus</span>
+          <span>Building In Public</span>
+        </div>
+        <div class="identity-meta">
+          <span class="label">learning</span>
+          <span>Web dev & Python</span>
+        </div>
+
+        <div class="status-block">
+          <span class="label">Now</span>
+          <span class="status-dot"></span>
+          <span id="status-working"></span>
+        </div>
+        <nav class="side-nav" aria-label="Main navigation">
+          <button class="nav-btn active" data-view="home">home</button>
+          <button class="nav-btn" data-view="journal">journal</button>
+          <button class="nav-btn" data-view="lab-note">Lab notes</button>
+        </nav>
+        <button class="random-btn" id="random-btn">↻ random entry</button>
+
+        <div class="notebook-stats" id="notebook-stats"></div>
+        <div class="recently-viewed" id="recently-viewed"></div>
+
+        <div class="panel-footer">
+          <div class="social-links">
+            <a
+              href="https://github.com/Diparsan79"
+              target="_blank"
+              rel="noopener"
+              >github</a
+            >
+            <a
+              href="https://x.com/diparsanpathak"
+              target="_blank"
+              rel="noopener"
+              >x (twitter)</a
+            >
+          </div>
+          <span>made with passion</span>
+        </div>
+      </aside>
+      <main class="feed-area">
+        <div class="search-wrap">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="search entries..."
+            aria-label="Search entries"
+          />
+          <span class="search-icon">⌕</span>
+          <div class="search-results-count" id="search-count"></div>
+        </div>
+        <div
+          class="feed"
+          id="feed"
+          aria-live="polite"
+          aria-label="Content feed"
+        ></div>
+      </main>
     </div>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
     <script src="data.js"></script>
     <script src="script.js"></script>
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
-</body>
+  </body>
 </html>
