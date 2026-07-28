@@ -10,13 +10,17 @@ function showLanding() {
   const searchWrap = document.querySelector(".search-wrap");
   if (searchWrap) searchWrap.style.display = "none";
 
-  document.querySelectorAll(".landing-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      const view = link.dataset.view;
-      setActiveNav(view);
-      showFeed(view);
+  document
+    .querySelectorAll(".landing-link, .hero-btn[data-view]")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        const view = link.dataset.view;
+        setActiveNav(view);
+        showFeed(view);
+      });
     });
-  });
+
+  fetchGitHubStats();
 }
 
 function showFeed(filter = "all") {
@@ -449,6 +453,58 @@ function renderSidebarTags() {
       filterByTag(tagBtn.dataset.tag);
     });
   });
+}
+
+// GitHub API Fetch
+async function fetchGitHubStats() {
+  try {
+    const userRes = await fetch("https://api.github.com/users/Diparsan79");
+    if (!userRes.ok) return;
+    const userData = await userRes.json();
+
+    const reposRes = await fetch(
+      "https://api.github.com/users/Diparsan79/repos?per_page=100",
+    );
+    if (!reposRes.ok) return;
+    const reposData = await reposRes.json();
+
+    let totalStars = 0;
+    let totalForks = 0;
+    let lastCommitDate = new Date(0);
+
+    reposData.forEach((repo) => {
+      totalStars += repo.stargazers_count;
+      totalForks += repo.forks_count;
+      const pushed = new Date(repo.pushed_at);
+      if (pushed > lastCommitDate) lastCommitDate = pushed;
+    });
+
+    // Update DOM if on landing page
+    const repoEl = document.getElementById("gh-repos");
+    const starEl = document.getElementById("gh-stars");
+    const forkEl = document.getElementById("gh-forks");
+    const commitEl = document.getElementById("gh-last-commit");
+
+    if (repoEl) repoEl.textContent = userData.public_repos;
+    if (starEl) starEl.textContent = totalStars;
+    if (forkEl) forkEl.textContent = totalForks;
+
+    if (commitEl && lastCommitDate.getTime() > 0) {
+      const diffHrs = Math.floor(
+        (new Date() - lastCommitDate) / (1000 * 60 * 60),
+      );
+      const diffDays = Math.floor(diffHrs / 24);
+
+      let timeStr = "";
+      if (diffHrs < 1) timeStr = "less than an hour ago";
+      else if (diffHrs < 24) timeStr = `${diffHrs} hours ago`;
+      else timeStr = `${diffDays} days ago`;
+
+      commitEl.textContent = `Last Commit: ${timeStr}`;
+    }
+  } catch (error) {
+    console.error("Error fetching GitHub stats:", error);
+  }
 }
 
 handleHashOnLoad();

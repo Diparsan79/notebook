@@ -95,29 +95,123 @@ const entries = [
 
 const landing = `
     <div class="landing">
-        <h1 class="hero-title">Diparsan's Notebook</h1>
-        <p class="landing-intro">I'm Diparsan Pathak, a 16-year-old exploring the frontiers of decentralized systems, cryptography, and computer science. This space is my digital garden.</p>
-        
-        <div class="landing-about">
-            <h2>About Me</h2>
-            <ul class="about-list">
-                <li><strong>Location:</strong> Bharatpur, Nepal</li>
-                <li><strong>Focus:</strong> Building In Public</li>
-                <li><strong>Learning:</strong> Web dev & Python</li>
-            </ul>
-        </div>
-
-        <div class="landing-connect">
-            <h2>Connect</h2>
-            <div class="landing-social-links">
-                <a href="https://github.com/Diparsan79" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://www.linkedin.com/in/diparsan-pathak/" target="_blank" rel="noopener">LinkedIn</a>
+        <div class="landing-hero">
+            <h1 class="hero-title">Diparsan Pathak</h1>
+            <p class="hero-subtitle">I'm a high school student from Nepal passionate about machine learning, embedded systems, and open-source software. I'm currently building projects at the intersection of AI and hardware while preparing for university.</p>
+            <div class="hero-buttons">
+                <button class="hero-btn" data-view="lab-note">View Projects</button>
+                <a href="https://github.com/Diparsan79" target="_blank" rel="noopener" class="hero-btn">GitHub</a>
             </div>
         </div>
 
-        <p class="landing-nav-hint">
-            Browse the <button class="landing-link" data-view="journal">journal</button> for my raw thoughts, 
-            or dive into my <button class="landing-link" data-view="lab-note">lab notes</button> for technical experiments.
-        </p>
+        <div class="landing-section">
+            <h2>Stats</h2>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Hackathons</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">National Awards</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="landing-section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">C</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks</h3>
+                    <div class="skill-pills">
+                        <span class="skill-pill">FastAPI</span>
+                        <span class="skill-pill">Flask</span>
+                        <span class="skill-pill">Streamlit</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>AI</h3>
+                    <div class="skill-pills">
+                        <span class="skill-pill">LangChain</span>
+                        <span class="skill-pill">ChromaDB</span>
+                        <span class="skill-pill">Hugging Face</span>
+                        <span class="skill-pill">PyTorch</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Hardware</h3>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Arduino</span>
+                        <span class="skill-pill">ESP32</span>
+                        <span class="skill-pill">Sensors</span>
+                        <span class="skill-pill">PCB basics</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Git</span>
+                        <span class="skill-pill">Linux</span>
+                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="landing-section">
+            <h2>GitHub</h2>
+            <div class="github-card">
+                <div class="github-stats-grid">
+                    <div class="github-stat">
+                        <span class="github-stat-value" id="gh-repos">27</span>
+                        <span class="github-stat-label">Public Repos</span>
+                    </div>
+                    <div class="github-stat">
+                        <span class="github-stat-value" id="gh-stars">153</span>
+                        <span class="github-stat-label">Stars Earned</span>
+                    </div>
+                    <div class="github-stat">
+                        <span class="github-stat-value" id="gh-forks">42</span>
+                        <span class="github-stat-label">Forks</span>
+                    </div>
+                    <div class="github-stat">
+                        <span class="github-stat-value">3</span>
+                        <span class="github-stat-label">OS Contributions</span>
+                    </div>
+                    <div class="github-stat">
+                        <span class="github-stat-value">1</span>
+                        <span class="github-stat-label">Published Package</span>
+                    </div>
+                </div>
+                <div class="github-footer">
+                    <span>@Diparsan79</span>
+                    <span id="gh-last-commit">Last Commit: 2 hours ago</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="landing-section">
+            <h2>Contact</h2>
+            <div class="contact-links">
+                <a href="mailto:diparsanpathak0@gmail.com" class="contact-link">Email</a>
+                <a href="https://github.com/Diparsan79" target="_blank" rel="noopener" class="contact-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/diparsan-pathak/" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
+                <span class="contact-link" style="border: none; cursor: default; color: var(--color-muted)">Location: Nepal</span>
+            </div>
+        </div>
     </div>
 `;
