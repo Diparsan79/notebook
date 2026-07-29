@@ -96,27 +96,20 @@ body {
 }
 
 .theme-toggle {
-  background: none;
-  border: none;
+  background: var(--color-hover-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   cursor: pointer;
   font-size: 1.2rem;
-  color: var(--color-muted);
-  padding: 0;
-  transition:
-    color var(--transition),
-    transform var(--transition);
+  color: var(--color-text);
+  padding: 0.25rem 0.5rem;
+  transition: all var(--transition);
 }
 
 .theme-toggle:hover {
-  color: var(--color-text);
-  transform: rotate(15deg);
-}
-
-.identity-meta {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--space-md);
-  font-size: 0.85rem;
+  background: var(--color-bg);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .label {
@@ -126,26 +119,6 @@ body {
   letter-spacing: 0.1em;
   color: var(--color-muted);
   margin-bottom: 2px;
-}
-
-.status-block {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-size: 0.85rem;
-  color: var(--color-text);
-  margin-bottom: var(--space-lg);
-  padding: var(--space-xs) var(--space-sm);
-  background: var(--color-hover-bg);
-  border-radius: var(--radius);
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-accent);
-  border-radius: 50%;
-  display: inline-block;
 }
 
 /* Navigation */
@@ -180,57 +153,6 @@ body {
 .nav-btn.active {
   color: var(--color-accent);
   font-weight: 700;
-}
-
-.random-btn {
-  background: none;
-  border: 1px solid var(--color-border);
-  color: var(--color-muted);
-  padding: var(--space-xs) var(--space-sm);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: var(--radius);
-  transition: all var(--transition);
-  margin-bottom: var(--space-lg);
-}
-
-.random-btn:hover {
-  border-color: var(--color-text);
-  color: var(--color-text);
-}
-
-/* Notebook Stats & Recent */
-.notebook-stats,
-.recently-viewed {
-  margin-bottom: var(--space-lg);
-}
-
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--color-muted);
-  margin-bottom: var(--space-xs);
-}
-
-.stat-value {
-  color: var(--color-text);
-}
-
-.recent-link {
-  display: block;
-  font-size: 0.85rem;
-  color: var(--color-text);
-  text-decoration: none;
-  margin-top: var(--space-xs);
-  transition: color var(--transition);
-}
-
-.recent-link:hover {
-  color: var(--color-accent);
 }
 
 /* Footer */

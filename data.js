@@ -99,7 +99,7 @@ const landing = `
             <h1 class="hero-title">Diparsan Pathak</h1>
             <p class="hero-subtitle">I'm a high school student from Nepal passionate about machine learning, embedded systems, and open-source software. I'm currently building projects at the intersection of AI and hardware while preparing for university.</p>
             <div class="hero-buttons">
-                <button class="hero-btn" data-view="lab-note">View Projects</button>
+                <a href="https://github.com/Diparsan79?tab=repositories" target="_blank" rel="noopener" class="hero-btn">View Projects</a>
                 <a href="https://github.com/Diparsan79" target="_blank" rel="noopener" class="hero-btn">GitHub</a>
             </div>
         </div>
@@ -177,15 +177,15 @@ const landing = `
             <div class="github-card">
                 <div class="github-stats-grid">
                     <div class="github-stat">
-                        <span class="github-stat-value" id="gh-repos">27</span>
+                        <span class="github-stat-value" id="gh-repos">--</span>
                         <span class="github-stat-label">Public Repos</span>
                     </div>
                     <div class="github-stat">
-                        <span class="github-stat-value" id="gh-stars">153</span>
+                        <span class="github-stat-value" id="gh-stars">--</span>
                         <span class="github-stat-label">Stars Earned</span>
                     </div>
                     <div class="github-stat">
-                        <span class="github-stat-value" id="gh-forks">42</span>
+                        <span class="github-stat-value" id="gh-forks">--</span>
                         <span class="github-stat-label">Forks</span>
                     </div>
                     <div class="github-stat">
@@ -199,7 +199,7 @@ const landing = `
                 </div>
                 <div class="github-footer">
                     <span>@Diparsan79</span>
-                    <span id="gh-last-commit">Last Commit: 2 hours ago</span>
+                    <span id="gh-last-commit">Fetching latest activity...</span>
                 </div>
             </div>
         </div>

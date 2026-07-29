@@ -36,7 +36,7 @@ function setActiveNav(view) {
   document.querySelector(`[data-view="${view}"]`).classList.add("active");
 }
 
-function renderEntries(filter = "all") {
+function renderEntries(filter = "all", tag = null) {
   const existingLanding = feed.querySelector(".landing");
   if (existingLanding) existingLanding.remove();
 
@@ -46,16 +46,21 @@ function renderEntries(filter = "all") {
   const existingEntries = feed.querySelectorAll(".entry, .empty-state");
   existingEntries.forEach((e) => e.remove());
 
-  let filtered =
-    filter === "all" ? entries : entries.filter((e) => e.type === filter);
+  let filtered = entries;
+  if (tag) {
+    filtered = entries.filter((e) => e.tags.includes(tag));
+  } else if (filter !== "all") {
+    filtered = entries.filter((e) => e.type === filter);
+  }
 
   filtered = [
     ...filtered.filter((e) => e.pinned),
     ...filtered.filter((e) => !e.pinned),
   ];
 
-  const label =
-    filter === "all"
+  const label = tag
+    ? `tag: ${tag}`
+    : filter === "all"
       ? "all entries"
       : filter === "journal"
         ? "journal"
@@ -174,46 +179,13 @@ function attachTagListeners() {
 }
 
 function filterByTag(tag) {
-  const filtered = entries.filter((e) => e.tags.includes(tag));
+  feed.classList.add("grid-bg");
+  const searchWrap = document.querySelector(".search-wrap");
+  if (searchWrap) searchWrap.style.display = "flex";
 
-  const existingEntries = feed.querySelectorAll(
-    ".entry, .empty-state, .feed-header",
-  );
-  existingEntries.forEach((e) => e.remove());
+  navBtns.forEach((btn) => btn.classList.remove("active"));
 
-  const header = document.createElement("div");
-  header.className = "feed-header";
-  header.innerHTML = `
-    <h1>tag : ${tag}</h1>
-    <span class="feed-count">${filtered.length} ${filtered.length === 1 ? "entry" : "entries"}</span>
-  `;
-  feed.appendChild(header);
-
-  filtered.forEach((entry) => {
-    const article = document.createElement("article");
-    article.className = `entry ${entry.type}${entry.pinned ? " pinned" : ""}`;
-    article.dataset.id = entry.id;
-
-    article.innerHTML = `
-      <div class="entry-header">
-        <span class="entry-type">${entry.type}</span>
-        <span class="entry-date" title="${entry.date}">${relativeTime(entry.date)}</span>
-        <span class="entry-readtime">${readingtime(entry.body)}</span>
-        <h2 class="entry-title">${entry.title}</h2>
-        <p class="entry-preview">${entry.preview}</p>
-        <div class="entry-tags">
-          ${entry.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
-        </div>
-      </div>
-      <div class="entry-body">
-        ${entry.body}
-      </div>
-    `;
-    feed.appendChild(article);
-  });
-
-  attachExpandListeners();
-  attachTagListeners();
+  renderEntries("all", tag);
 }
 
 function readingtime(body) {
