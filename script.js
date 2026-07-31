@@ -4,6 +4,33 @@ const navBtns = document.querySelectorAll(".nav-btn");
 const themeToggle = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
 
+function typeText(element, text, speed = 50) {
+  element.textContent = "";
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  typeWriter();
+}
+
+function animateValue(obj, start, end, duration, suffix = "") {
+  if (!obj) return;
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    obj.innerHTML = Math.floor(progress * (end - start) + start) + suffix;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
 function showLanding() {
   feed.innerHTML = landing;
   feed.classList.remove("grid-bg");
@@ -19,6 +46,17 @@ function showLanding() {
         showFeed(view);
       });
     });
+
+  const staticStats = document.querySelectorAll('.stat-number, .github-stat-value:not([id])');
+  staticStats.forEach(stat => {
+    const text = stat.textContent;
+    const targetMatch = text.match(/\d+/);
+    if (targetMatch) {
+      const target = parseInt(targetMatch[0]);
+      const suffix = text.replace(/[0-9]/g, '');
+      animateValue(stat, 0, target, 1000, suffix);
+    }
+  });
 
   fetchGitHubStats();
 }
@@ -73,7 +111,7 @@ function renderEntries(filter = "all", tag = null) {
   const header = document.createElement("div");
   header.className = "feed-header";
   header.innerHTML = `
-    <h1>${label}</h1>
+    <h1 id="feed-header-title"></h1>
     <span class="feed-count">${filtered.length} ${filtered.length === 1 ? "entry" : "entries"}</span>
   `;
 
@@ -83,6 +121,9 @@ function renderEntries(filter = "all", tag = null) {
   } else {
     feed.prepend(header);
   }
+
+  const h1 = header.querySelector("#feed-header-title");
+  typeText(h1, label, 50);
 
   if (filtered.length === 0) {
     const empty = document.createElement("div");
@@ -457,9 +498,9 @@ async function fetchGitHubStats() {
     const forkEl = document.getElementById("gh-forks");
     const commitEl = document.getElementById("gh-last-commit");
 
-    if (repoEl) repoEl.textContent = userData.public_repos;
-    if (starEl) starEl.textContent = totalStars;
-    if (forkEl) forkEl.textContent = totalForks;
+    if (repoEl) animateValue(repoEl, 0, userData.public_repos, 1000);
+    if (starEl) animateValue(starEl, 0, totalStars, 1000);
+    if (forkEl) animateValue(forkEl, 0, totalForks, 1000);
 
     if (commitEl && lastCommitDate.getTime() > 0) {
       const diffHrs = Math.floor(

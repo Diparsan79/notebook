@@ -3,10 +3,10 @@ const entries = [
     id: 1,
     type: "journal",
     date: "2026-06-03",
-    title: "The Shift to Decentralization",
+    title: "Why I Build",
     preview:
-      "Why I am dedicating my time to understanding peer-to-peer systems and decentralized networks.",
-    tags: ["web3", "philosophy"],
+      "Building things has become the fastest way I learn, break and improve",
+    tags: ["philosophy", "mindset", "engineering"],
     pinned: true,
     image:
       "https://images.unsplash.com/photo-1639762681485-074b7f4d2315?w=800&q=80",
