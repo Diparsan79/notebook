@@ -27,7 +27,7 @@ I buil this space to document my projects, experiments, failures, and the random
 ```javascript
     {
     id: 6,
-    type: "journal", // or "lab-note"
+    type: "journal","lab-note"
     date: "YYYY-MM-DD",
     title: "Title",
     preview: "A short snippet of what the post is about...",

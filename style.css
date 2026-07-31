@@ -564,6 +564,7 @@ body {
 body {
   position: relative;
 }
+
 body::before {
   content: "";
   position: fixed;
@@ -590,6 +591,7 @@ body::before {
   0% {
     transform: translate(0, 0);
   }
+
   100% {
     transform: translate(-40px, -40px);
   }
@@ -599,11 +601,13 @@ body::before {
 .landing-hero {
   margin-bottom: var(--space-xl);
 }
+
 .hero-title {
   font-size: 2.5rem;
   margin-bottom: var(--space-sm);
   line-height: 1.2;
 }
+
 .hero-subtitle {
   font-size: 1.1rem;
   color: var(--color-muted);
@@ -611,11 +615,13 @@ body::before {
   margin-bottom: var(--space-md);
   line-height: 1.6;
 }
+
 .hero-buttons {
   display: flex;
   gap: var(--space-sm);
   margin-bottom: var(--space-lg);
 }
+
 .hero-btn {
   padding: 0.5rem 1rem;
   border: 1px solid var(--color-border);
@@ -629,6 +635,7 @@ body::before {
   text-decoration: none;
   display: inline-block;
 }
+
 .hero-btn:hover {
   background: var(--color-hover-bg);
   border-color: var(--color-accent);
@@ -637,6 +644,7 @@ body::before {
 .landing-section {
   margin-bottom: var(--space-xl);
 }
+
 .landing-section h2 {
   font-size: 1.25rem;
   margin-bottom: var(--space-md);
@@ -644,6 +652,7 @@ body::before {
   color: var(--color-accent);
   text-transform: lowercase;
 }
+
 .landing-section h2::before {
   content: "./";
   color: var(--color-muted);
@@ -655,16 +664,19 @@ body::before {
   gap: var(--space-xl);
   flex-wrap: wrap;
 }
+
 .stat-item {
   display: flex;
   flex-direction: column;
 }
+
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
   font-family: var(--font-heading);
   color: var(--color-text);
 }
+
 .stat-label {
   font-size: 0.8rem;
   font-family: var(--font-mono);
@@ -677,17 +689,20 @@ body::before {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: var(--space-lg);
 }
+
 .skill-category h3 {
   font-size: 0.9rem;
   font-family: var(--font-mono);
   color: var(--color-muted);
   margin-bottom: var(--space-sm);
 }
+
 .skill-pills {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
 }
+
 .skill-pill {
   padding: 0.25rem 0.5rem;
   background: var(--color-hover-bg);
@@ -705,26 +720,31 @@ body::before {
   padding: var(--space-md);
   background: var(--color-hover-bg);
 }
+
 .github-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
   margin-bottom: var(--space-md);
 }
+
 .github-stat {
   display: flex;
   flex-direction: column;
 }
+
 .github-stat-value {
   font-size: 1.25rem;
   font-weight: 700;
   font-family: var(--font-heading);
 }
+
 .github-stat-label {
   font-size: 0.75rem;
   font-family: var(--font-mono);
   color: var(--color-muted);
 }
+
 .github-footer {
   font-size: 0.75rem;
   font-family: var(--font-mono);
@@ -740,6 +760,7 @@ body::before {
   display: flex;
   gap: var(--space-md);
 }
+
 .contact-link {
   color: var(--color-text);
   text-decoration: none;
@@ -747,6 +768,7 @@ body::before {
   border-bottom: 1px solid transparent;
   transition: all var(--transition);
 }
+
 .contact-link:hover {
   border-bottom-color: var(--color-accent);
   color: var(--color-accent);
@@ -790,6 +812,8 @@ body::before {
   .panel-footer {
     display: none;
   }
+
+
 
   .feed-area {
     padding: var(--space-md) var(--space-lg);

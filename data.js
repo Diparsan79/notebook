@@ -48,7 +48,7 @@ const entries = [
         tags: ["robotics", "embedded", "systems"],
         pinned: false,
         body: `
-            <p>There's something incredibly satisfying about watching code interact with hardware. An LED blinking, a motor spinning, or a sensor responding somehow feels more rewarding than another general boring & bland terminal output.</p>
+            <p>There's something incredibly satisfying about watching code interact with hardware. An led blinking, a motor spinning, or a sensor responding somehow feels more rewarding than another general boring & bland terminal output.</p>
             <p>That's why once in a while I keep coming back to small robotics projects to keep that spark of my childhood alive. Long term, I want to build intelligent systems that don't just generate text but they sense , think and act.</p>
         `,
     },
