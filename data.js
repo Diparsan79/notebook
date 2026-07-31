@@ -1,28 +1,28 @@
 const entries = [
-  {
-    id: 1,
-    type: "journal",
-    date: "2026-06-03",
-    title: "Why I Build",
-    preview:
-      "Building things has become the fastest way I learn, break and improve",
-    tags: ["philosophy", "mindset", "engineering"],
-    pinned: true,
-    body: `
+    {
+        id: 1,
+        type: "journal",
+        date: "2026-06-03",
+        title: "Why I Build",
+        preview:
+            "Building things has become the fastest way I learn, break and improve",
+        tags: ["philosophy", "mindset", "engineering"],
+        pinned: true,
+        body: `
             <p>I used to spend hours watching tutorials, convincing myself I was making progress while I was js fooling my brain. But eventually , I realized real learning only happenned when I started building things myself.</p>
             <p>.This is a start of something new I've been trying. This is my engineering notebook where I track my journals and research and findings.  A place to document my learnings, researches and findings. Here I document my projects, experiments, lessons, failures and random ideas that keep me awake at night. Building in public is hard, but essential. Homefully, years from now, I'll look back and see just how far I've come.</p>
         `,
-  },
-  {
-    id: 2,
-    type: "lab-note",
-    date: "2026-06-05",
-    title: "Building my First RAG Assistant",
-    preview:
-      "Understanding retrieval, embeddings, and LLMs by building them from scratch.",
-    tags: ["AI", "RAG"],
-    pinned: false,
-    body: `
+    },
+    {
+        id: 2,
+        type: "lab-note",
+        date: "2026-06-05",
+        title: "Building my First RAG Assistant",
+        preview:
+            "Understanding retrieval, embeddings, and LLMs by building them from scratch.",
+        tags: ["AI", "RAG"],
+        pinned: false,
+        body: `
             <div class="lab-section">
                 <span class="lab-label">Objective</span>
                 <p>Build an AI assistant capable of answering questions from custom documents instead of relying solely on the model's knowledge.</p>
@@ -37,31 +37,31 @@ const entries = [
                 <p>The assistant now provides grounded answers from uploaded documents. More importantly, I finally understand how RAG systems actually workk!!</p>
             </div>
         `,
-  },
-  {
-    id: 3,
-    type: "journal",
-    date: "2026-06-12",
-    title: "Coding Feels Better When It Moves",
-    preview:
-      "Why embedded systems and robotics fascinate me aswell as everybody more than software-sided projects",
-    tags: ["robotics","embedded", "systems"],
-    pinned: false,
-    body: `
+    },
+    {
+        id: 3,
+        type: "journal",
+        date: "2026-06-12",
+        title: "Coding Feels Better When It Moves",
+        preview:
+            "Why embedded systems and robotics fascinate me aswell as everybody more than software-sided projects",
+        tags: ["robotics", "embedded", "systems"],
+        pinned: false,
+        body: `
             <p>There's something incredibly satisfying about watching code interact with hardware. An LED blinking, a motor spinning, or a sensor responding somehow feels more rewarding than another general boring & bland terminal output.</p>
             <p>That's why once in a while I keep coming back to small robotics projects to keep that spark of my childhood alive. Long term, I want to build intelligent systems that don't just generate text but they sense , think and act.</p>
         `,
-  },
-  {
-    id: 4,
-    type: "lab-note",
-    date: "2026-07-31",
-    title: "Designing a Study Tracker Thad I'd Actually Use",
-    preview: 
-        "Building the study tracker I always wished existed instead of settling for random-ahh existing apps.",
-    tags: ["viable", "web-dev", "FASTAPI"],
-    pinned: true,
-    body: `
+    },
+    {
+        id: 4,
+        type: "lab-note",
+        date: "2026-07-31",
+        title: "Designing a Study Tracker That I'll Actually Use",
+        preview:
+            "Building the study tracker I always wished existed instead of settling for random-ahh existing apps.",
+        tags: ["viable", "web-dev", "FASTAPI"],
+        pinned: true,
+        body: `
             <div class="lab-section">
                 <span class="lab-label">Objective</span>
                 <p>Create a study tracker focused on meaningful progress rather than simply logging hours. I wanted something minimal, motivating, and that is catered around how I actually study.</p>
@@ -76,17 +76,17 @@ const entries = [
                 <p>The project is still in works. Its still continuously evolving among multiple ideas, but its so crazy how its already changing how I think about product design.</p>
             </div>
         `,
-  },
-  {
-    id: 5,
-    type: "lab-note",
-    date: "2025-07-09",
-    title: "Building CivicPulse",
-    preview:
-        "Creating a secure digital governmental platform for a hackathon taught me far more than just writing code.",
-    tags: ["hackathon", "CivicPulse"],
-    pinned: false,
-    body: `
+    },
+    {
+        id: 5,
+        type: "lab-note",
+        date: "2025-07-09",
+        title: "Building CivicPulse",
+        preview:
+            "Creating a secure digital governmental platform for a hackathon taught me far more than just writing code.",
+        tags: ["hackathon", "CivicPulse"],
+        pinned: false,
+        body: `
             <div class="lab-section">
                 <span class="lab-label">Objective</span>
                 <p>Develop a digital governmental platform where users post their local day-to-day issues and local government bodies can attend the issue fastly and more conveniently</p>
@@ -98,11 +98,11 @@ const entries = [
             <div class="lab-section">
                 <span class="lab-label">Result</span>
                 <p>CivicPulse wasn't just another project. It was an introduction to collaborative software engineering. It showed us that communication, planning, and iteration are just as important as technical ability. And finally it was somewhere where my 1h git crash-course came in handy.</p>
-            </span>` 
-  },
-  {
+            </span>`
+    },
+    {
 
-  }
+    }
 
 ];
 
