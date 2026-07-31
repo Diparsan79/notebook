@@ -1,5 +1,10 @@
-## blog site
+# Notebook
+> my take on Build In Public
 
-I initially wanted to make just a basic blogging website for me but then i kinda thought of placing it within a good theme for some aesthetics.
-I wanted to make it have an engineering notebook kinda vibe .
-I plan to make this minimal and easy to use. I'm still confused with what kinda website i wanna make
+[**live Demo**](https://diparsan79.github.io/notebook/)
+
+I buil this space to document my projects, experiments, failures, and the random ideas that keep me up at night. Instead of relying on random third party platforms for my journal.
+
+## whats in it
+- **landing page**: just an about me kinda page for some details about me
+![Alt text](images/notebook_site.png)
