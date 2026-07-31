@@ -23,9 +23,9 @@ I buil this space to document my projects, experiments, failures, and the random
 - **GitHub Integration**: Fetches real-time repo and commit activity directly from the GitHub API.
 
 
-## How it works (adding new content in the site)\
-\`\`\`javascript
-{
+## How it works (adding new content in the site)
+```javascript
+    {
     id: 6,
     type: "journal", // or "lab-note"
     date: "YYYY-MM-DD",
@@ -33,11 +33,11 @@ I buil this space to document my projects, experiments, failures, and the random
     preview: "A short snippet of what the post is about...",
     tags: ["tag1", "tag2"],
     pinned: false,
-    body: \`
+    body: `
         <p>Actual post content written in HTML...</p>
-    \`
-}
-\`\`\`
+    `
+    }
+```
 
 ## 💻 Local Setup
 
