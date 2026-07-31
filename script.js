@@ -47,13 +47,15 @@ function showLanding() {
       });
     });
 
-  const staticStats = document.querySelectorAll('.stat-number, .github-stat-value:not([id])');
-  staticStats.forEach(stat => {
+  const staticStats = document.querySelectorAll(
+    ".stat-number, .github-stat-value:not([id])",
+  );
+  staticStats.forEach((stat) => {
     const text = stat.textContent;
     const targetMatch = text.match(/\d+/);
     if (targetMatch) {
       const target = parseInt(targetMatch[0]);
-      const suffix = text.replace(/[0-9]/g, '');
+      const suffix = text.replace(/[0-9]/g, "");
       animateValue(stat, 0, target, 1000, suffix);
     }
   });
@@ -166,7 +168,6 @@ function renderEntries(filter = "all", tag = null) {
       </div>
       <div class="entry-body-wrap">
         <div class="entry-body">
-          ${entry.image ? `<img src="${entry.image}" alt="" class="entry-image">` : ""}
           ${entry.body}
         </div>
         <div class="entry-footer">
@@ -327,8 +328,10 @@ function searchEntries(query) {
 
     article.innerHTML = `
     <div class="entry-header">
-      <span class="entry-type">${entry.date}</span>
-      <span class="entry-date">${entry.date}</span>
+      <div class="entry-meta">
+        <span class="entry-type">${entry.type}</span>
+        <span class="entry-date">${relativeTime(entry.date)}</span>
+      </div>
       <span class="entry-readtime">${readingtime(entry.body)}</span>
       <h2 class="entry-title">${highlight(entry.title, query)}</h2>
       <p class="entry-preview">${highlight(entry.preview, query)}</p>

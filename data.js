@@ -8,8 +8,6 @@ const entries = [
       "Building things has become the fastest way I learn, break and improve",
     tags: ["philosophy", "mindset", "engineering"],
     pinned: true,
-    image:
-      "https://images.unsplash.com/photo-1639762681485-074b7f4d2315?w=800&q=80",
     body: `
             <p>I've recently found myself completely absorbed in the world of decentralized systems. For a long time, the centralized web felt inevitable, but diving deep into cryptography and peer-to-peer networks has completely shifted my perspective.</p>
             <p>This blog will serve as my open notebook. A place to document my learnings, random thoughts on blockchain architecture, and experiments in the web3 space. Building in public is hard, but essential.</p>
