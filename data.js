@@ -9,31 +9,32 @@ const entries = [
     tags: ["philosophy", "mindset", "engineering"],
     pinned: true,
     body: `
-            <p>I've recently found myself completely absorbed in the world of decentralized systems. For a long time, the centralized web felt inevitable, but diving deep into cryptography and peer-to-peer networks has completely shifted my perspective.</p>
-            <p>This blog will serve as my open notebook. A place to document my learnings, random thoughts on blockchain architecture, and experiments in the web3 space. Building in public is hard, but essential.</p>
+            <p>I used to spend hours watching tutorials, convincing myself I was making progress while I was js fooling my brain. But eventually , I realized real learning only happenned when I started building things myself.</p>
+            <p>.This is a start of something new I've been trying. This is my engineering notebook where I track my journals and research and findings.  A place to document my learnings, researches and findings. Here I document my projects, experiments, lessons, failures and random ideas that keep me awake at night. Building in public is hard, but essential. Homefully, years from now, I'll look back and see just how far I've come.</p>
         `,
   },
   {
     id: 2,
     type: "lab-note",
     date: "2026-06-05",
-    title: "Understanding Merkle Trees",
+    title: "Building my First RAG Assistant",
     preview:
-      "A deep dive into the data structure that makes blockchains verifiable.",
-    tags: ["cryptography", "data-structures"],
+      "Understanding retrieval, embeddings, and LLMs by building them from scratch.",
+    tags: ["AI", "RAG"],
     pinned: false,
     body: `
             <div class="lab-section">
                 <span class="lab-label">Objective</span>
-                <p>Break down how Merkle Trees allow efficient and secure verification of content in large bodies of data.</p>
+                <p>Build an AI assistant capable of answering questions from custom documents instead of relying solely on the model's knowledge.</p>
             </div>
             <div class="lab-section">
                 <span class="lab-label">Process</span>
-                <p>I implemented a basic Merkle Tree from scratch using Python. By taking a list of transaction hashes, pairing them, and recursively hashing the pairs, I was able to generate a single Merkle Root.</p>
+                <p>I used LangChain, ChromaDB, Hugging Face embeddings, and Groq to create a retrieval pipeline. Most of the work wasn't code, It was improving document chunking, retrieval quality, and prompt design.</p>
+                <p>At first , the improper prompts weren't being answered properly but I then had to make a prompt-writing guide for it and then finally it worked.</p>
             </div>
             <div class="lab-section">
                 <span class="lab-label">Result</span>
-                <p>It's fascinating how a single 256-bit hash can cryptographically prove the existence of thousands of underlying records without needing the entire dataset. I'll push the code to my GitHub soon.</p>
+                <p>The assistant now provides grounded answers from uploaded documents. More importantly, I finally understand how RAG systems actually workk!!</p>
             </div>
         `,
   },
@@ -41,54 +42,68 @@ const entries = [
     id: 3,
     type: "journal",
     date: "2026-06-12",
-    title: "Thoughts on the EVM Architecture",
+    title: "Coding Feels Better When It Moves",
     preview:
-      "Is the Ethereum Virtual Machine becoming obsolete, or is it the ultimate standard?",
-    tags: ["ethereum", "architecture"],
+      "Why embedded systems and robotics fascinate me aswell as everybody more than software-sided projects",
+    tags: ["robotics","embedded", "systems"],
     pinned: false,
     body: `
-            <p>Been reading a lot of whitepapers lately regarding alternative virtual machines (like Solana's Sealevel and MoveVM). The EVM has immense network effects, but its sequential processing model is a massive bottleneck.</p>
-            <p>Will layer-2 rollups save the EVM, or will a parallelized execution environment ultimately take the crown? Time will tell. My bet is currently on parallelized EVMs like Monad gaining serious traction this year.</p>
+            <p>There's something incredibly satisfying about watching code interact with hardware. An LED blinking, a motor spinning, or a sensor responding somehow feels more rewarding than another general boring & bland terminal output.</p>
+            <p>That's why once in a while I keep coming back to small robotics projects to keep that spark of my childhood alive. Long term, I want to build intelligent systems that don't just generate text but they sense , think and act.</p>
         `,
   },
   {
     id: 4,
     type: "lab-note",
-    date: "2026-06-20",
-    title: "Building a Simple P2P Node",
-    preview:
-      "Experimenting with libp2p to create a basic decentralized chat node.",
-    tags: ["networking", "libp2p"],
-    pinned: false,
+    date: "2026-07-31",
+    title: "Designing a Study Tracker Thad I'd Actually Use",
+    preview: 
+        "Building the study tracker I always wished existed instead of settling for random-ahh existing apps.",
+    tags: ["viable", "web-dev", "FASTAPI"],
+    pinned: true,
     body: `
             <div class="lab-section">
                 <span class="lab-label">Objective</span>
-                <p>Use the libp2p networking stack to create two nodes that can discover each other and exchange messages without a central server.</p>
+                <p>Create a study tracker focused on meaningful progress rather than simply logging hours. I wanted something minimal, motivating, and that is catered around how I actually study.</p>
             </div>
             <div class="lab-section">
                 <span class="lab-label">Process</span>
-                <p>I set up a Node.js project and used <code>libp2p</code> with a simple floodsub routing protocol. Dealing with NAT traversal and peer discovery was significantly harder than standard HTTP client/server architecture.</p>
+                <p>I spent more time thinking & planning the user-experience than writing code. Instead of copying popular productivity apps, I questioned what metrics genuinely make a difference in daily life : consistency, subjects covered, focused sessions, and long term progress.</p>
+                <p>Every feature had to answer these questions: "Would I personally use this every day?" "Would it help me calibrate my study methods and decisions more carefully?"</p>
             </div>
             <div class="lab-section">
                 <span class="lab-label">Result</span>
-                <p>Success! The nodes successfully discovered each other using an MDNS local discovery module. Next step: trying to connect nodes across the internet using a bootstrap node.</p>
+                <p>The project is still in works. Its still continuously evolving among multiple ideas, but its so crazy how its already changing how I think about product design.</p>
             </div>
         `,
   },
   {
     id: 5,
-    type: "journal",
-    date: "2026-06-28",
-    title: "Digital Identity and Privacy",
+    type: "lab-note",
+    date: "2025-07-09",
+    title: "Building CivicPulse",
     preview:
-      "Who owns your data, and how Zero-Knowledge proofs might be the answer.",
-    tags: ["privacy", "zkp"],
+        "Creating a secure digital governmental platform for a hackathon taught me far more than just writing code.",
+    tags: ["hackathon", "CivicPulse"],
     pinned: false,
     body: `
-            <p>The more I study Zero-Knowledge Proofs (ZKPs), the more I realize they are the missing layer of the internet. The ability to prove a statement is true without revealing the underlying data is basically magic.</p>
-            <p>Imagine proving you are over 18 without showing your passport, or proving you have enough funds for a loan without revealing your bank balance. ZK is going to change everything about digital identity.</p>
-        `,
+            <div class="lab-section">
+                <span class="lab-label">Objective</span>
+                <p>Develop a digital governmental platform where users post their local day-to-day issues and local government bodies can attend the issue fastly and more conveniently</p>
+            </div>
+            <div class="lab-section">
+                <span class="lab-label">Process</span>
+                <p>Working with a team meant balancing ideas, and technical challenges. We used PHP, JavaScript, HTML, CSS, and SQL to build the system while constantly refining both functionality and usability. Building software with other people turned out to be just as challenging as writing the code itself.</p>
+            </div>
+            <div class="lab-section">
+                <span class="lab-label">Result</span>
+                <p>CivicPulse wasn't just another project. It was an introduction to collaborative software engineering. It showed us that communication, planning, and iteration are just as important as technical ability. And finally it was somewhere where my 1h git crash-course came in handy.</p>
+            </span>` 
   },
+  {
+
+  }
+
 ];
 
 const landing = `
