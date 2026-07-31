@@ -42,7 +42,7 @@ const entries = [
         id: 3,
         type: "journal",
         date: "2026-06-12",
-        title: "Coding Feels Better When It Moves",
+        title: "Coding Feels Better When Something Moves IRL",
         preview:
             "Why embedded systems and robotics fascinate me aswell as everybody more than software-sided projects",
         tags: ["robotics", "embedded", "systems"],

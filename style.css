@@ -762,14 +762,37 @@ body::before {
     width: 100%;
     height: auto;
     min-height: unset;
-    position: static;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-bg);
     border-right: none;
     border-bottom: 1px solid var(--color-border);
-    padding: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .identity-header {
+    margin-bottom: var(--space-sm);
+  }
+
+  .side-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: var(--space-xs);
+    gap: var(--space-md);
+    margin-bottom: 0;
+  }
+
+  .sidebar-tags {
+    display: none;
+  }
+
+  .panel-footer {
+    display: none;
   }
 
   .feed-area {
-    padding: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
     max-width: 100%;
   }
 }

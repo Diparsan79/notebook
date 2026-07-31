@@ -329,23 +329,34 @@ function searchEntries(query) {
     article.className = `entry ${entry.type}`;
     article.dataset.id = entry.id;
 
+    const words = entry.body.replace(/<[^>]*>/g, "").trim().split(/\s+/).length;
+    const wordCount = Math.ceil(words / 200);
+
     article.innerHTML = `
-    <div class="entry-header">
-      <div class="entry-meta">
-        <span class="entry-type">${entry.type}</span>
-        <span class="entry-date">${relativeTime(entry.date)}</span>
+      <div class="entry-header">
+        <div class="entry-meta">
+          <span class="entry-type">${entry.type}</span>
+          <span class="entry-date">${relativeTime(entry.date)}</span>
+        </div>
+        <h2 class="entry-title">
+          ${highlight(entry.title, query)}
+          <span class="expand-indicator">▼</span>
+        </h2>
+        <p class="entry-preview">${highlight(entry.preview, query)}</p>
+        <div class="entry-tags">
+          <span class="reading-time">${wordCount} min read</span>
+          ${entry.tags.map((t) => `<button class="tag" data-tag="${t}">${highlight(t, query)}</button>`).join("")}
+        </div>
       </div>
-      <span class="entry-readtime">${readingtime(entry.body)}</span>
-      <h2 class="entry-title">${highlight(entry.title, query)}</h2>
-      <p class="entry-preview">${highlight(entry.preview, query)}</p>
-      <div class="entry-tags">
-        ${entry.tags.map((t) => `<span class="tag">${highlight(t, query)}</span>`).join("")}
+      <div class="entry-body-wrap">
+        <div class="entry-body">
+          ${highlight(entry.body, query)}
+        </div>
+        <div class="entry-footer">
+          <span>${words} words</span>
+        </div>
       </div>
-    </div>
-    <div class="entry-body">
-      ${entry.body}
-    </div>
-  `;
+    `;
 
     feed.appendChild(article);
   });
