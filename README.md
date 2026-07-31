@@ -44,17 +44,17 @@ I buil this space to document my projects, experiments, failures, and the random
 Since there's no build step or backend, running this locally takes about two seconds.
 
 1. Clone the repo:
-   \`\`\`bash
+   ```bash
    git clone https://github.com/Diparsan79/notebook
-   \`\`\`
+   ```
 2. Navigate to the directory:
-   \`\`\`bash
+   ```bash
    cd notebook
-   \`\`\`
+   ```
 3. Open `index.html` in your browser, or spin up a quick local server (e.g., using VS Code Live Server or Python):
-   \`\`\`bash
+   ```bash
    python3 -m http.server 8000
-   \`\`\`
+   ```
 
    YAY!! the site is now locally running in your computer
 
