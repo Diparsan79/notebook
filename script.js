@@ -88,8 +88,8 @@ function renderEntries(filter = "all", tag = null) {
 
   let filtered = entries;
   if (tag) {
-    filtered = entries.filter((e) => e.tags.includes(tag));
-  } else if (filter !== "all") {
+    filtered = entries.filter((e) => e.tags && e.tags.includes(tag));
+  } else if (filter !== "all" && filter !== "home") {
     filtered = entries.filter((e) => e.type === filter);
   }
 
@@ -289,11 +289,14 @@ function searchEntries(query) {
   }
 
   const filtered = entries.filter((e) => {
+    const matchesView = currentView === "all" || currentView === "home" ? true : e.type === currentView;
+    if (!matchesView) return false;
+
     return (
       e.title.toLowerCase().includes(q) ||
       e.preview.toLowerCase().includes(q) ||
       e.body.toLowerCase().includes(q) ||
-      e.tags.some((t) => t.toLowerCase().includes(q))
+      (e.tags && e.tags.some((t) => t.toLowerCase().includes(q)))
     );
   });
 
@@ -450,7 +453,9 @@ function renderSidebarTags() {
   // Extract unique tags
   const allTags = new Set();
   entries.forEach((entry) => {
-    entry.tags.forEach((tag) => allTags.add(tag));
+    if (entry.tags) {
+      entry.tags.forEach((tag) => allTags.add(tag));
+    }
   });
 
   const uniqueTags = Array.from(allTags).sort();

@@ -100,9 +100,7 @@ const entries = [
                 <p>CivicPulse wasn't just another project. It was an introduction to collaborative software engineering. It showed us that communication, planning, and iteration are just as important as technical ability. And finally it was somewhere where my 1h git crash-course came in handy.</p>
             </span>`
     },
-    {
 
-    }
 
 ];
 
